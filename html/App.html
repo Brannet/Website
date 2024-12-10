@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Compliment Generator</title>
+    <a href="Resume.html">  Scratch page!</a> 
+    <a href="../index.html">Home Page</a>
+
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(to bottom, #ffecd2, #fcb69f);
+        }
+        h1 {
+            color: #4A90E2;
+        }
+        p {
+            font-size: 1.2em;
+            text-align: center;
+            margin: 20px;
+        }
+        .generator {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            max-width: 400px;
+        }
+        label {
+            font-size: 1em;
+            color: #333;
+        }
+        input[type="text"] {
+            padding: 10px;
+            border: 2px solid #4A90E2;
+            border-radius: 6px;
+            margin: 10px 0;
+            width: 100%;
+        }
+        button {
+            background-color: #4A90E2;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        button:hover {
+            background-color: #357ABD;
+        }
+        #compliment {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: #4A4A4A;
+        }
+    </style>
+</head>
+<body>
+    <div class="generator">
+        <h1>Custom Compliment Generator</h1>
+        <label for="name">Enter Your Name:</label>
+        <input type="text" id="name" placeholder="e.g., Sarah" />
+        <label for="hobby">Enter a Hobby:</label>
+        <input type="text" id="hobby" placeholder="e.g., painting" />
+        <button onclick="generateCompliment()">Generate Compliment</button>
+        <p id="compliment"></p>
+    </div>
+
+    <script>
+        const compliments = [
+            "You light up every room you enter!",
+            "Your creativity in %hobby% is absolutely inspiring!",
+            "The world is better with you in it, %name%.",
+            "Your smile is contagious, and your energy is unmatched!",
+            "You have an incredible knack for %hobby%. Keep going!",
+            "%name%, you’re an absolute gem—never forget that.",
+            "The effort you put into %hobby% is remarkable and shines through!",
+            "If kindness was a currency, you’d be the richest person alive, %name%.",
+            "You make the world a brighter place just by being you!",
+            "Your passion for %hobby% is truly a gift to the world."
+        ];
+
+        function generateCompliment() {
+            const name = document.getElementById('name').value.trim() || "Friend";
+            const hobby = document.getElementById('hobby').value.trim() || "your interests";
+            const randomIndex = Math.floor(Math.random() * compliments.length);
+            let compliment = compliments[randomIndex];
+
+            // Replace placeholders with user input
+            compliment = compliment.replace('%name%', name).replace('%hobby%', hobby);
+
+            // Display the compliment
+            document.getElementById('compliment').textContent = compliment;
+        }
+    </script>
+</body>
+</html>
